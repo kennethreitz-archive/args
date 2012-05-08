@@ -30,7 +30,8 @@ A few arguments::
 
     $ tool -s this that --import this and that and this and that
     Aruments passed in: ['-s', 'this', 'that', '--import', 'this', 'and', 'that', 'and', 'this', 'and', 'that']
-    Flags detected: <args ['-s', '--import'Files detected: []
+    Flags detected: <args ['-s', '--import'
+    Files detected: []
     NOT Files detected: <args ['-s', 'this', 'that', '--import', 'this', 'and', 'that', 'and', 'this', 'and', 'that']>
     Grouped Arguments: {'--import': <args ['this', 'and', 'that', 'and', 'this', 'and', 'that']>, '_': <args []>, '-s': <args ['this', 'that']>}
 
