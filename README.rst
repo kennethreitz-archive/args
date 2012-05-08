@@ -12,6 +12,7 @@ Here's an example application::
     import args
 
     print 'Aruments passed in: ' + str(args.all)
+    print 'Flags detected: ' + str(args.flags)
     print 'Files detected: ' + str(args.files)
     print 'NOT files detected: ' + str(args.not_files)
     print 'Grouped Arguments: ' + str(args.grouped)
