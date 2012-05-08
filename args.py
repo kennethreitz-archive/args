@@ -9,9 +9,17 @@ This module provides the CLI argument interface for clint.
 """
 
 import os
+import sys
 from sys import argv
 from glob import glob
 from collections import OrderedDict
+
+# Python 3
+if sys.version_info[0] == 3:
+    string_type = str
+else:
+    string_type = basestring
+
 
 def _expand_path(path):
     """Expands directories and globs in given path."""
@@ -34,7 +42,7 @@ def _expand_path(path):
 def _is_collection(obj):
     """Tests if an object is a collection. Strings don't count."""
 
-    if isinstance(obj, str):
+    if isinstance(obj, string_type):
         return False
 
     return hasattr(obj, '__getitem__')
