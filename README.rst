@@ -11,7 +11,7 @@ Here's an example application::
 
     import args
 
-    print 'Aruments passed in: ' + str(args.all)
+    print 'Arguments passed in: ' + str(args.all)
     print 'Flags detected: ' + str(args.flags)
     print 'Files detected: ' + str(args.files)
     print 'NOT files detected: ' + str(args.not_files)
@@ -20,7 +20,7 @@ Here's an example application::
 No arguments::
 
     $ tool
-    Aruments passed in: []
+    Arguments passed in: []
     Flags detected: <args []>
     Files detected: []
     NOT Files detected: <args []>
@@ -29,7 +29,7 @@ No arguments::
 A few arguments::
 
     $ tool -s this that --import this and that and this and that
-    Aruments passed in: ['-s', 'this', 'that', '--import', 'this', 'and', 'that', 'and', 'this', 'and', 'that']
+    Arguments passed in: ['-s', 'this', 'that', '--import', 'this', 'and', 'that', 'and', 'this', 'and', 'that']
     Flags detected: <args ['-s', '--import'
     Files detected: []
     NOT Files detected: <args ['-s', 'this', 'that', '--import', 'this', 'and', 'that', 'and', 'this', 'and', 'that']>
@@ -38,7 +38,7 @@ A few arguments::
 A few expanded file arguments::
 
     $ tool *.py
-    Aruments passed in: ['args.py', 'setup.py']
+    Arguments passed in: ['args.py', 'setup.py']
     Flags detected: <args []>
     Files detected: ['args.py', 'setup.py']
     NOT Files detected: <args []>
@@ -47,7 +47,7 @@ A few expanded file arguments::
 A few non-expanded file arguments::
 
     $ tool '*.py'
-    Aruments passed in: ['*.py']
+    Arguments passed in: ['*.py']
     Flags detected: <args []>
     Files detected: ['args.py', 'setup.py']
     NOT Files detected: <args []>
@@ -56,7 +56,7 @@ A few non-expanded file arguments::
 A few mixed files/flags/arguments::
 
     $ tool '*.py' --test test face book -s ~/.ssh
-    Aruments passed in: ['*.py', '--test', 'test', 'face', 'book', '-s', '/Users/kreitz/.ssh']
+    Arguments passed in: ['*.py', '--test', 'test', 'face', 'book', '-s', '/Users/kreitz/.ssh']
     Flags detected: <args ['--test', '-s']>
     Files detected: ['args.py', 'setup.py', '/Users/kreitz/.ssh/id_rsa', '/Users/kreitz/.ssh/id_rsa.pub', '/Users/kreitz/.ssh/known_hosts']
     NOT Files detected: <args ['--test', 'test', 'face', 'book', '-s']>
