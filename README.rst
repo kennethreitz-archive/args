@@ -64,7 +64,7 @@ A few mixed files/flags/arguments::
 Installation
 ------------
 
-Installation is simple with pip:
+Installation is simple with pip::
 
     $ pip install args
 
