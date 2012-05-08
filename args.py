@@ -34,7 +34,7 @@ def _expand_path(path):
 def _is_collection(obj):
     """Tests if an object is a collection. Strings don't count."""
 
-    if isinstance(obj, basestring):
+    if isinstance(obj, str):
         return False
 
     return hasattr(obj, '__getitem__')
