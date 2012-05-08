@@ -10,8 +10,8 @@ This simple module gives you an elegant interface for your command line argumemn
 from setuptools import setup
 
 setup(
-    name='dj-database-url',
-    version='1.0.0',
+    name='args',
+    version='0.1.0',
     url='https://github.com/kennethreitz/args',
     license='BSD',
     author='Kenneth Reitz',
