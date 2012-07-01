@@ -6,3 +6,4 @@ python:
 install:
     - pip install nose
     - pip install . --use-mirrors
+script: nosetests
