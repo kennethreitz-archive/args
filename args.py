@@ -379,6 +379,19 @@ class ArgsList(object):
 
         return ArgsList(self.all)
 
+    @property
+    def assignments(self):
+        """Extracts assignment values from assignments."""
+
+        collection = OrderedDict()
+
+        for arg in self.all:
+            if '=' in arg:
+                collection.setdefault(arg.split('=', 1)[0], ArgsList(no_argv=True))
+                collection[arg.split('=', 1)[0]]._args.append(arg.split('=', 1)[1])
+
+        return collection
+
 
 args = ArgsList()
 get = args.get
@@ -404,3 +417,4 @@ not_flags = args.not_flags
 files = args.files
 not_files = args.not_files
 copy = args.copy
+assignments = args.assignments

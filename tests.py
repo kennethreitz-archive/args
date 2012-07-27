@@ -52,4 +52,15 @@ def test_start_with():
     arg = args.ArgsList(args = arguments)
     ok_(arg.start_with('p').all == dynamic_lang)
 
+def test_assignments():
+    details = {'--arch': ['x64', 'i386'], 'lang': ['']}
+    arguments = []
+    for key in details:
+        for argument in details[key]:
+            arguments.append(key + '=' + argument)
+
+    arg = args.ArgsList(args = arguments)
+    for item in arg.assignments:
+        ok_(arg.assignments[item].all == details[item])
+
 
