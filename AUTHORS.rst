@@ -7,6 +7,7 @@ Development Lead
 Patches and Suggestions
 ---
     - Kracekumar <me@kracekumar.com>
+    - Steven Honson
 
 
 
