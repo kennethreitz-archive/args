@@ -31,9 +31,7 @@ def test_not_files():
     ok_(arg.not_files.all == arguments)
 
 def test_grouped():
-    details = {'--language': ['python27', 'python32'], '--creator': ['Guido Van Rossum'], \
-               '--foundation': ['psf']
-               }
+    details = {'--alphabet': ['a', 'b'], '--number': ['one'], '--test': ['']}
     arguments = []
     for key in details:
         for argument in details[key]:
