@@ -31,7 +31,7 @@ def test_not_files():
     ok_(arg.not_files.all == arguments)
 
 def test_grouped():
-    details = {'--alphabet': ['a', 'b'], '--number': ['one'], '--test': ['']}
+    details = {'--letter': ['a', 'b'], '--number': ['one'], '--test': ['']}
     arguments = []
     for key in details:
         for argument in details[key]:

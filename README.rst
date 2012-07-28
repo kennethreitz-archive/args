@@ -30,12 +30,12 @@ No arguments::
 
 A few arguments::
 
-    $ tool -s yes no --number=one --alphabet a b c --number=two
-    Arguments passed in: ['-s', 'yes', 'no', '--number=one', '--alphabet', 'a', 'b', 'c', '--number=two']
-    Flags detected: <args ['-s', '--number=one', '--alphabet', '--number=two']>
+    $ tool -s yes no --number=one --letter a b c --number=two
+    Arguments passed in: ['-s', 'yes', 'no', '--number=one', '--letter', 'a', 'b', 'c', '--number=two']
+    Flags detected: <args ['-s', '--number=one', '--letter', '--number=two']>
     Files detected: []
-    NOT files detected: <args ['-s', 'yes', 'no', '--number=one', '--alphabet', 'a', 'b', 'c', '--number=two']>
-    Grouped Arguments: OrderedDict([('_', <args []>), ('-s', <args ['yes', 'no']>), ('--number=one', <args []>), ('--alphabet', <args ['a', 'b', 'c']>), ('--number=two', <args []>)])
+    NOT files detected: <args ['-s', 'yes', 'no', '--number=one', '--letter', 'a', 'b', 'c', '--number=two']>
+    Grouped Arguments: OrderedDict([('_', <args []>), ('-s', <args ['yes', 'no']>), ('--number=one', <args []>), ('--letter', <args ['a', 'b', 'c']>), ('--number=two', <args []>)])
     Assignments detected: OrderedDict([('--number', <args ['one', 'two']>)])
 
 A few expanded file arguments::
@@ -60,11 +60,11 @@ A few non-expanded file arguments::
 
 A few mixed files/flags/arguments::
 
-    Arguments passed in: ['*.py', '--alphabet', 'a', 'b', 'c', '-s', '/home/example/.example', '--number=one', '--number=two']
-    Flags detected: <args ['--alphabet', '-s', '--number=one', '--number=two']>
+    Arguments passed in: ['*.py', '--letter', 'a', 'b', 'c', '-s', '/home/example/.example', '--number=one', '--number=two']
+    Flags detected: <args ['--letter', '-s', '--number=one', '--number=two']>
     Files detected: ['setup.py', 'args.py', 'tool.py', 'tests.py', '/home/example/.example/two', '/home/example/.example/one']
-    NOT files detected: <args ['--alphabet', 'a', 'b', 'c', '-s', '--number=one', '--number=two']>
-    Grouped Arguments: OrderedDict([('_', <args ['*.py']>), ('--alphabet', <args ['a', 'b', 'c']>), ('-s', <args ['/home/example/.example']>), ('--number=one', <args []>), ('--number=two', <args []>)])
+    NOT files detected: <args ['--letter', 'a', 'b', 'c', '-s', '--number=one', '--number=two']>
+    Grouped Arguments: OrderedDict([('_', <args ['*.py']>), ('--letter', <args ['a', 'b', 'c']>), ('-s', <args ['/home/example/.example']>), ('--number=one', <args []>), ('--number=two', <args []>)])
     Assignments detected: OrderedDict([('--number', <args ['one', 'two']>)])
 
 
