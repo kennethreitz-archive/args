@@ -3,9 +3,6 @@
 """
 args
 ~~~~
-
-This module provides the CLI argument interface for clint.
-
 """
 
 import os
@@ -46,7 +43,6 @@ def _is_collection(obj):
         return False
 
     return hasattr(obj, '__getitem__')
-
 
 
 class ArgsList(object):
@@ -373,11 +369,13 @@ class ArgsList(object):
 
         return ArgsList(_args, no_argv=True)
 
+
     @property
     def copy(self):
         """Returns a copy of Args object for temporary manipulation."""
 
         return ArgsList(self.all)
+
 
     @property
     def assignments(self):
