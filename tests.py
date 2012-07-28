@@ -4,6 +4,9 @@
 import args
 from nose.tools import ok_
 
+def compare_values(a, b):
+    ok_(a == b)
+
 def test_args_all():
     arguments = ['install', '--lang', 'python', 'c', 'js']
     arg = args.ArgsList(args = arguments)
@@ -30,18 +33,20 @@ def test_not_files():
     ok_(arg.not_files.all == arguments)
 
 def test_grouped():
-    details = {'--language': ['python'], '--creator': ['Guido Van Rossum'], \
+    details = {'--language': ['python27', 'python32'], '--creator': ['Guido Van Rossum'], \
                '--foundation': ['psf']
                }
     arguments = []
     for key in details:
-        arguments.append(key)
-        arguments.append(details[key][0])
+        for argument in details[key]:
+            arguments.append(key)
+            arguments.append(argument)
 
     arg = args.ArgsList(args = arguments)
+    yield compare_values, len(arg.grouped) - 1, len(details)
     for item in arg.grouped:
         if item is not '_':
-            ok_(arg.grouped[item].all == details[item])
+            yield compare_values, arg.grouped[item].all, details[item]
 
 def test_start_with():
     dynamic_lang = ['python', 'perl']
@@ -60,7 +65,8 @@ def test_assignments():
             arguments.append(key + '=' + argument)
 
     arg = args.ArgsList(args = arguments)
+    yield compare_values, len(arg.assignments), len(details)
     for item in arg.assignments:
-        ok_(arg.assignments[item].all == details[item])
+        yield compare_values, arg.assignments[item].all, details[item]
 
 
