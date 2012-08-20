@@ -22,6 +22,7 @@ setup(
     zip_safe=False,
     include_package_data=True,
     platforms='any',
+    install_requires=['ordereddict'],
     classifiers=[
         'Environment :: Web Environment',
         'Intended Audience :: Developers',

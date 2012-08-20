@@ -9,7 +9,10 @@ import os
 import sys
 from sys import argv
 from glob import glob
-from collections import OrderedDict
+try:
+    from collections import OrderedDict
+except ImportError:
+    from ordereddict import OrderedDict
 
 # Python 3
 if sys.version_info[0] == 3:
