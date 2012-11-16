@@ -57,14 +57,11 @@ class ArgsList(object):
         else:
             self._args = args
 
-
     def __len__(self):
         return len(self._args)
 
-
     def __repr__(self):
         return '<args %s>' % (repr(self._args))
-
 
     def __getitem__(self, i):
         try:
@@ -72,23 +69,21 @@ class ArgsList(object):
         except IndexError:
             return None
 
-
     def __contains__(self, x):
         return self.first(x) is not None
 
-
     def get(self, x):
         """Returns argument at given index, else none."""
+
         try:
             return self.all[x]
         except IndexError:
             return None
 
-
     def get_with(self, x):
         """Returns first argument that contains given string."""
-        return self.all[self.first_with(x)]
 
+        return self.all[self.first_with(x)]
 
     def remove(self, x):
         """Removes given arg (or list thereof) from Args object."""
@@ -104,20 +99,18 @@ class ArgsList(object):
         else:
             _remove(x)
 
-
     def pop(self, x):
         """Removes and Returns value at given index, else none."""
+
         try:
             return self._args.pop(x)
         except IndexError:
             return None
 
-
     def any_contain(self, x):
         """Tests if given string is contained in any stored argument."""
 
         return bool(self.first_with(x))
-
 
     def contains(self, x):
         """Tests if given object is in arguments list.
@@ -125,11 +118,10 @@ class ArgsList(object):
 
         return self.__contains__(x)
 
-
     def first(self, x):
-        """Returns first found index of given value (or list of values)"""
+        """Returns first found index of given value (or list of values)."""
 
-        def _find( x):
+        def _find(x):
             try:
                 return self.all.index(str(x))
             except ValueError:
@@ -144,9 +136,8 @@ class ArgsList(object):
         else:
             return _find(x)
 
-
     def first_with(self, x):
-        """Returns first found index containing value (or list of values)"""
+        """Returns first found index containing value (or list of values)."""
 
         def _find(x):
             try:
@@ -165,9 +156,10 @@ class ArgsList(object):
         else:
             return _find(x)
 
-
     def first_without(self, x):
-        """Returns first found index not containing value (or list of values)"""
+        """Returns first found index not containing value
+           (or list of values).
+        """
 
         def _find(x):
             try:
@@ -186,24 +178,24 @@ class ArgsList(object):
         else:
             return _find(x)
 
-
     def start_with(self, x):
-           """Returns all arguments beginning with given string (or list thereof)"""
+        """Returns all arguments beginning with given string
+           (or list thereof).
+        """
 
-           _args = []
+        _args = []
 
-           for arg in self.all:
-               if _is_collection(x):
-                   for _x in x:
-                       if arg.startswith(x):
-                           _args.append(arg)
-                           break
-               else:
-                   if arg.startswith(x):
-                       _args.append(arg)
+        for arg in self.all:
+            if _is_collection(x):
+                for _x in x:
+                    if arg.startswith(x):
+                        _args.append(arg)
+                        break
+            else:
+                if arg.startswith(x):
+                    _args.append(arg)
 
-           return ArgsList(_args, no_argv=True)
-
+        return ArgsList(_args, no_argv=True)
 
     def contains_at(self, x, index):
         """Tests if given [list of] string is at given index."""
@@ -221,7 +213,6 @@ class ArgsList(object):
         except IndexError:
             return False
 
-
     def has(self, x):
         """Returns true if argument exists at given index.
            Accepts: integer.
@@ -233,9 +224,10 @@ class ArgsList(object):
         except IndexError:
             return False
 
-
     def value_after(self, x):
-        """Returns value of argument after given found argument (or list thereof)."""
+        """Returns value of argument after given found argument
+           (or list thereof).
+        """
 
         try:
             try:
@@ -247,7 +239,6 @@ class ArgsList(object):
 
         except IndexError:
             return None
-
 
     @property
     def grouped(self):
@@ -271,7 +262,6 @@ class ArgsList(object):
 
         return collection
 
-
     @property
     def last(self):
         """Returns last argument."""
@@ -281,16 +271,14 @@ class ArgsList(object):
         except IndexError:
             return None
 
-
     @property
     def all(self):
         """Returns all arguments."""
 
         return self._args
 
-
     def all_with(self, x):
-        """Returns all arguments containing given string (or list thereof)"""
+        """Returns all arguments containing given string (or list thereof)."""
 
         _args = []
 
@@ -306,9 +294,10 @@ class ArgsList(object):
 
         return ArgsList(_args, no_argv=True)
 
-
     def all_without(self, x):
-        """Returns all arguments not containing given string (or list thereof)"""
+        """Returns all arguments not containing given string
+           (or list thereof).
+        """
 
         _args = []
 
@@ -324,20 +313,17 @@ class ArgsList(object):
 
         return ArgsList(_args, no_argv=True)
 
-
     @property
     def flags(self):
         """Returns Arg object including only flagged arguments."""
 
         return self.start_with('-')
 
-
     @property
     def not_flags(self):
         """Returns Arg object excluding flagged arguments."""
 
         return self.all_without('-')
-
 
     @property
     def files(self, absolute=False):
@@ -355,7 +341,6 @@ class ArgsList(object):
 
         return _paths
 
-
     @property
     def not_files(self):
         """Returns a list of all arguments that aren't files/globs."""
@@ -369,13 +354,11 @@ class ArgsList(object):
 
         return ArgsList(_args, no_argv=True)
 
-
     @property
     def copy(self):
         """Returns a copy of Args object for temporary manipulation."""
 
         return ArgsList(self.all)
-
 
     @property
     def assignments(self):
@@ -385,8 +368,10 @@ class ArgsList(object):
 
         for arg in self.all:
             if '=' in arg:
-                collection.setdefault(arg.split('=', 1)[0], ArgsList(no_argv=True))
-                collection[arg.split('=', 1)[0]]._args.append(arg.split('=', 1)[1])
+                collection.setdefault(
+                    arg.split('=', 1)[0], ArgsList(no_argv=True))
+                collection[arg.split('=', 1)[0]]._args.append(
+                    arg.split('=', 1)[1])
 
         return collection
 
